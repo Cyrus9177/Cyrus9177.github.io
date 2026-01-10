@@ -5,119 +5,345 @@
     <title>Yeshua Cyrus C. Bautista | IT Portfolio</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
-        /* General Styles */
-        body {
-            font-family: Arial, sans-serif;
+        * {
             margin: 0;
             padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             line-height: 1.6;
-            background-color: #f4f4f4;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             color: #333;
-        }
-
-        a {
-            text-decoration: none;
-            color: #007bff;
-        }
-
-        a:hover {
-            text-decoration: underline;
+            overflow-x: hidden;
         }
 
         /* Header & Navigation */
         header {
-            background-color: #222;
-            color: #fff;
-            padding: 20px 10%;
-            text-align: center;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 2rem 5%;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            animation: slideDown 0.5s ease-out;
         }
 
-        header h1 {
-            margin: 0;
-            font-size: 2rem;
+        @keyframes slideDown {
+            from {
+                transform: translateY(-100%);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .header-text h1 {
+            font-size: 1.8rem;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 0.3rem;
+        }
+
+        .header-text p {
+            color: #666;
+            font-size: 1rem;
         }
 
         nav {
-            margin-top: 10px;
+            display: flex;
+            gap: 2rem;
+            flex-wrap: wrap;
         }
 
         nav a {
-            margin: 0 15px;
-            color: #fff;
-            font-weight: bold;
+            color: #333;
+            font-weight: 600;
+            text-decoration: none;
+            position: relative;
+            transition: color 0.3s ease;
+            padding: 0.5rem 0;
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            transition: width 0.3s ease;
+        }
+
+        nav a:hover {
+            color: #667eea;
+            text-decoration: none;
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        /* Main Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 5%;
         }
 
         /* Sections */
         section {
-            padding: 50px 10%;
-            max-width: 1000px;
-            margin: 0 auto;
+            background: white;
+            margin: 2rem 0;
+            padding: 3rem 5%;
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+            animation: fadeInUp 0.6s ease-out;
+            animation-fill-mode: both;
+        }
+
+        section:nth-child(1) { animation-delay: 0.1s; }
+        section:nth-child(2) { animation-delay: 0.2s; }
+        section:nth-child(3) { animation-delay: 0.3s; }
+        section:nth-child(4) { animation-delay: 0.4s; }
+        section:nth-child(5) { animation-delay: 0.5s; }
+        section:nth-child(6) { animation-delay: 0.6s; }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         section h2 {
-            font-size: 1.8rem;
-            margin-bottom: 20px;
-            color: #222;
-            border-bottom: 2px solid #007bff;
+            font-size: 2rem;
+            margin-bottom: 2rem;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            position: relative;
             display: inline-block;
-            padding-bottom: 5px;
         }
 
-        /* Skills */
-        .skills ul {
-            list-style: none;
-            padding: 0;
+        section h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 60px;
+            height: 4px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 2px;
         }
 
-        .skills li {
-            display: inline-block;
-            margin: 5px 10px;
-            background: #007bff;
-            color: #fff;
-            padding: 8px 12px;
-            border-radius: 20px;
-            font-size: 0.9rem;
+        /* About Section */
+        #about p {
+            font-size: 1.1rem;
+            color: #555;
+            line-height: 1.8;
         }
 
-        /* Projects */
-        .projects .project {
-            background: #fff;
-            padding: 15px;
-            margin-bottom: 20px;
-            border-radius: 8px;
-            box-shadow: 0px 2px 5px rgba(0,0,0,0.1);
+        /* Skills Section */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            gap: 1rem;
+            margin-top: 1rem;
         }
 
-        .projects .project h3 {
-            margin-top: 0;
+        .skill-item {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 1rem 1.5rem;
+            border-radius: 12px;
+            text-align: center;
+            font-weight: 600;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: default;
         }
 
-        /* Certifications & Activities */
+        .skill-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(102, 126, 234, 0.4);
+        }
+
+        /* Projects Section */
+        .project {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            padding: 2rem;
+            margin-bottom: 1.5rem;
+            border-radius: 15px;
+            border-left: 5px solid #667eea;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .project:hover {
+            transform: translateX(10px);
+            box-shadow: 0 8px 30px rgba(102, 126, 234, 0.3);
+        }
+
+        .project h3 {
+            color: #333;
+            margin-bottom: 1rem;
+            font-size: 1.4rem;
+        }
+
+        .project p {
+            color: #555;
+            margin-bottom: 0.5rem;
+        }
+
+        .project a {
+            color: #667eea;
+            font-weight: 600;
+            transition: color 0.3s ease;
+        }
+
+        .project a:hover {
+            color: #764ba2;
+        }
+
+        /* Lists */
         .certifications ul,
         .activities ul {
-            list-style-type: disc;
-            padding-left: 20px;
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .certifications li,
+        .activities li {
+            padding: 1rem 0 1rem 2.5rem;
+            position: relative;
+            color: #555;
+            border-bottom: 1px solid #eee;
+            transition: padding-left 0.3s ease;
+        }
+
+        .certifications li:last-child,
+        .activities li:last-child {
+            border-bottom: none;
+        }
+
+        .certifications li::before,
+        .activities li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 30px;
+            height: 30px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+        }
+
+        .certifications li:hover,
+        .activities li:hover {
+            padding-left: 3rem;
+        }
+
+        /* Contact Section */
+        #contact p {
+            margin: 1rem 0;
+            font-size: 1.1rem;
+        }
+
+        #contact a {
+            color: #667eea;
+            font-weight: 600;
+            transition: color 0.3s ease;
+        }
+
+        #contact a:hover {
+            color: #764ba2;
         }
 
         /* Footer */
         footer {
-            background-color: #222;
-            color: #fff;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            color: #333;
             text-align: center;
-            padding: 20px 10%;
+            padding: 2rem 5%;
+            margin-top: 3rem;
+            border-radius: 20px 20px 0 0;
+        }
+
+        footer p {
+            margin: 0.5rem 0;
         }
 
         footer a {
-            color: #fff;
-            margin: 0 10px;
+            color: #667eea;
+            margin: 0 1rem;
+            font-weight: 600;
+            transition: color 0.3s ease;
+        }
+
+        footer a:hover {
+            color: #764ba2;
         }
 
         /* Responsive */
         @media (max-width: 768px) {
-            nav a {
-                display: block;
-                margin: 10px 0;
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+                gap: 1rem;
             }
+
+            nav {
+                justify-content: center;
+                gap: 1rem;
+            }
+
+            nav a {
+                font-size: 0.9rem;
+            }
+
+            section {
+                padding: 2rem 1.5rem;
+            }
+
+            section h2 {
+                font-size: 1.5rem;
+            }
+
+            .skills-grid {
+                grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+            }
+        }
+
+        /* Scroll behavior */
+        html {
+            scroll-behavior: smooth;
         }
     </style>
 </head>
@@ -125,86 +351,91 @@
 
     <!-- Header -->
     <header>
-        <h1>Yeshua Cyrus Bautista</h1>
-        <p>IT Student | Aspiring Web Developer</p>
-        <nav>
-            <a href="#about">About</a>
-            <a href="#skills">Skills</a>
-            <a href="#projects">Projects</a>
-            <a href="#certifications">Certifications</a>
-            <a href="#activities">Activities</a>
-            <a href="#contact">Contact</a>
-        </nav>
+        <div class="header-content">
+            <div class="header-text">
+                <h1>Yeshua Cyrus Bautista</h1>
+                <p>IT Student | Aspiring Web Developer</p>
+            </div>
+            <nav>
+                <a href="#about">About</a>
+                <a href="#skills">Skills</a>
+                <a href="#projects">Projects</a>
+                <a href="#certifications">Certifications</a>
+                <a href="#activities">Activities</a>
+                <a href="#contact">Contact</a>
+            </nav>
+        </div>
     </header>
 
-    <!-- About Section -->
-    <section id="about">
-        <h2>About Me</h2>
-        <p>
-            Write a brief professional narrative here. Include your career goals, strengths, and what makes you unique.  
-            Example: "I am an IT student passionate about web development, with experience in building interactive websites and small games. I enjoy solving complex problems and contributing to open-source projects."
-        </p>
-    </section>
+    <!-- Main Container -->
+    <div class="container">
+        <!-- About Section -->
+        <section id="about">
+            <h2>About Me</h2>
+            <p>
+                I am an IT student passionate about web development, with experience in building interactive websites and small applications. I thrive on solving complex problems and continuously expanding my technical expertise. My goal is to leverage my skills in modern web technologies to create innovative solutions that make a positive impact. I'm always eager to learn new technologies and contribute to meaningful projects that challenge me to grow as a developer.
+            </p>
+        </section>
 
-    <!-- Skills Section -->
-    <section id="skills" class="skills">
-        <h2>Skills</h2>
-        <ul>
-            <li>HTML</li>
-            <li>CSS</li>
-            <li>JavaScript</li>
-            <li>Python</li>
-            <li>Git & GitHub</li>
-            <li>React</li>
-            <li>Node.js</li>
-        </ul>
-    </section>
+        <!-- Skills Section -->
+        <section id="skills">
+            <h2>Skills</h2>
+            <div class="skills-grid">
+                <div class="skill-item">HTML</div>
+                <div class="skill-item">CSS</div>
+                <div class="skill-item">JavaScript</div>
+                <div class="skill-item">Python</div>
+                <div class="skill-item">Git & GitHub</div>
+                <div class="skill-item">React</div>
+                <div class="skill-item">Node.js</div>
+            </div>
+        </section>
 
-    <!-- Projects Section -->
-    <section id="projects" class="projects">
-        <h2>Projects</h2>
-        <div class="project">
-            <h3>Project 1: Portfolio Website</h3>
-            <p>Created a personal portfolio website using HTML, CSS, and JavaScript. Includes interactive elements and responsive design. <a href="https://github.com/username/portfolio">View on GitHub</a></p>
-        </div>
-        <div class="project">
-            <h3>Project 2: Chat App</h3>
-            <p>Developed a real-time chat application using Node.js and Socket.io. Implemented user authentication and message storage. <a href="https://github.com/username/chat-app">View on GitHub</a></p>
-        </div>
-        <!-- Add more projects here -->
-    </section>
+        <!-- Projects Section -->
+        <section id="projects" class="projects">
+            <h2>Projects</h2>
+            <div class="project">
+                <h3>Project 1: Portfolio Website</h3>
+                <p>Created a personal portfolio website using HTML, CSS, and JavaScript. Includes interactive elements and responsive design. <a href="https://github.com/username/portfolio">View on GitHub →</a></p>
+            </div>
+            <div class="project">
+                <h3>Project 2: Chat App</h3>
+                <p>Developed a real-time chat application using Node.js and Socket.io. Implemented user authentication and message storage. <a href="https://github.com/username/chat-app">View on GitHub →</a></p>
+            </div>
+        </section>
 
-    <!-- Certifications Section -->
-    <section id="certifications" class="certifications">
-        <h2>Certifications</h2>
-        <ul>
-            <li>Google IT Support Professional Certificate</li>
-            <li>Coursera: Web Development Bootcamp</li>
-            <li>AWS Cloud Practitioner Certification</li>
-        </ul>
-    </section>
+        <!-- Certifications Section -->
+        <section id="certifications" class="certifications">
+            <h2>Certifications</h2>
+            <ul>
+                <li>freeCodeCamp: Responsive Web Design Certification</li>
+                <li>Cisco Networking Academy: Introduction to Cybersecurity</li>
+                <li>LinkedIn Learning: HTML & CSS Essential Training</li>
+            </ul>
+        </section>
 
-    <!-- Extracurricular Activities Section -->
-    <section id="activities" class="activities">
-        <h2>Extracurricular Activities</h2>
-        <ul>
-            <li>Member of Coding Club – organized hackathons</li>
-            <li>Volunteered as IT Support for University Events</li>
-            <li>Participated in national programming competitions</li>
-        </ul>
-    </section>
+        <!-- Extracurricular Activities Section -->
+        <section id="activities" class="activities">
+            <h2>Extracurricular Activities</h2>
+            <ul>
+                <li>Member of Coding Club – organized hackathons</li>
+                <li>Volunteered as IT Support for University Events</li>
+                <li>Participated in national programming competitions</li>
+            </ul>
+        </section>
 
-    <!-- Contact Section -->
-    <section id="contact">
-        <h2>Contact</h2>
-        <p>Email: your.email@example.com</p>
-        <p>LinkedIn: <a href="https://linkedin.com/in/yourprofile">linkedin.com/in/yourprofile</a></p>
-        <p>GitHub: <a href="https://github.com/username">github.com/username</a></p>
-    </section>
+        <!-- Contact Section -->
+        <section id="contact">
+            <h2>Contact</h2>
+            <p><strong>Email:</strong> <a href="mailto:your.email@example.com">your.email@example.com</a></p>
+            <p><strong>LinkedIn:</strong> <a href="https://linkedin.com/in/yourprofile">linkedin.com/in/yourprofile</a></p>
+            <p><strong>GitHub:</strong> <a href="https://github.com/username">github.com/username</a></p>
+        </section>
+    </div>
 
     <!-- Footer -->
     <footer>
-        <p>&copy; 2026 Your Name | All Rights Reserved</p>
+        <p>&copy; 2026 Yeshua Cyrus Bautista | All Rights Reserved</p>
         <p>
             <a href="https://github.com/username">GitHub</a> |
             <a href="https://linkedin.com/in/yourprofile">LinkedIn</a>
