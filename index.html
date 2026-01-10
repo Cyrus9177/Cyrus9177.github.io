@@ -5,7 +5,500 @@
     <title>Yeshua Cyrus C. Bautista | IT Portfolio</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="IT Student Portfolio - Web Development, Programming, and Technical Projects">
-    <link rel="stylesheet" href="assets/css/style.css">
+    <style>
+        /* Global Styles & Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            background: #f5f7fa;
+            color: #333;
+        }
+
+        /* Header & Navigation */
+        header {
+            background: #ffffff;
+            padding: 1.5rem 5%;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+        }
+
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .logo h1 {
+            font-size: 1.5rem;
+            color: #2c5aa0;
+        }
+
+        .logo p {
+            color: #6c757d;
+            font-size: 0.9rem;
+            margin: 0;
+        }
+
+        nav {
+            display: flex;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        nav a {
+            color: #495057;
+            font-weight: 600;
+            text-decoration: none;
+            transition: color 0.3s ease;
+            position: relative;
+            padding: 0.5rem 0;
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: #2c5aa0;
+            transition: width 0.3s ease;
+        }
+
+        nav a:hover,
+        nav a.active {
+            color: #2c5aa0;
+        }
+
+        nav a:hover::after,
+        nav a.active::after {
+            width: 100%;
+        }
+
+        /* Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 5%;
+        }
+
+        /* Sections */
+        section {
+            background: white;
+            margin: 2rem 0;
+            padding: 3rem 5%;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+        }
+
+        section h2 {
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            color: #2c5aa0;
+            position: relative;
+            padding-bottom: 0.5rem;
+        }
+
+        section h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 60px;
+            height: 4px;
+            background: #2c5aa0;
+            border-radius: 2px;
+        }
+
+        /* Profile Section */
+        #profile {
+            text-align: center;
+            background: linear-gradient(135deg, #2c5aa0 0%, #1e3a6f 100%);
+            color: white;
+            padding: 4rem 5%;
+            margin: 0;
+            border-radius: 0;
+        }
+
+        #profile h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        #profile .title {
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            opacity: 0.9;
+        }
+
+        #profile .contact-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        #profile .contact-links a {
+            color: white;
+            text-decoration: none;
+            padding: 0.7rem 1.5rem;
+            border: 2px solid white;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+            font-weight: 600;
+        }
+
+        #profile .contact-links a:hover {
+            background: white;
+            color: #2c5aa0;
+        }
+
+        /* Skills */
+        .skill-category {
+            margin-bottom: 2rem;
+        }
+
+        .skill-category h3 {
+            color: #495057;
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+        }
+
+        .skill-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .skill-tag {
+            background: #2c5aa0;
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: transform 0.3s ease;
+        }
+
+        .skill-tag:hover {
+            transform: scale(1.05);
+        }
+
+        /* Projects */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .project-card {
+            background: #f8f9fa;
+            padding: 2rem;
+            border-radius: 12px;
+            border-left: 4px solid #2c5aa0;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(44, 90, 160, 0.15);
+        }
+
+        .project-number {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            font-size: 3rem;
+            font-weight: 700;
+            color: rgba(44, 90, 160, 0.1);
+        }
+
+        .project-card h3 {
+            color: #2c5aa0;
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+
+        .project-card p {
+            color: #555;
+            margin-bottom: 1rem;
+        }
+
+        .tech-stack {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin: 1rem 0;
+        }
+
+        .tech-tag {
+            background: #e9ecef;
+            color: #495057;
+            padding: 0.3rem 0.8rem;
+            border-radius: 15px;
+            font-size: 0.85rem;
+        }
+
+        .project-links {
+            margin-top: 1.5rem;
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .project-links a {
+            color: #2c5aa0;
+            font-weight: 600;
+            text-decoration: none;
+        }
+
+        .project-links a:hover {
+            text-decoration: underline;
+        }
+
+        /* Accomplishments */
+        .accomplishments-list {
+            list-style: none;
+        }
+
+        .accomplishments-list li {
+            padding: 1rem 0 1rem 2.5rem;
+            position: relative;
+            color: #555;
+            border-bottom: 1px solid #e9ecef;
+        }
+
+        .accomplishments-list li:last-child {
+            border-bottom: none;
+        }
+
+        .accomplishments-list li::before {
+            content: '★';
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 30px;
+            height: 30px;
+            background: #2c5aa0;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1rem;
+        }
+
+        /* Certifications */
+        .cert-grid {
+            display: grid;
+            gap: 1.5rem;
+        }
+
+        .cert-item {
+            background: #f8f9fa;
+            padding: 1.5rem;
+            border-radius: 8px;
+            border-left: 4px solid #2c5aa0;
+            transition: all 0.3s ease;
+        }
+
+        .cert-item:hover {
+            transform: translateX(10px);
+            box-shadow: 0 4px 15px rgba(44, 90, 160, 0.1);
+        }
+
+        .cert-item h3 {
+            color: #2c5aa0;
+            margin-bottom: 0.5rem;
+            font-size: 1.1rem;
+        }
+
+        .cert-item p {
+            color: #6c757d;
+            margin-bottom: 0.5rem;
+        }
+
+        .cert-item a {
+            color: #2c5aa0;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .cert-item a:hover {
+            text-decoration: underline;
+        }
+
+        /* Activities */
+        .activities-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .activity-card {
+            background: #f8f9fa;
+            padding: 1.5rem;
+            border-radius: 8px;
+            border-top: 3px solid #2c5aa0;
+            transition: all 0.3s ease;
+        }
+
+        .activity-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .activity-card h3 {
+            color: #2c5aa0;
+            margin-bottom: 0.5rem;
+        }
+
+        .activity-card p {
+            color: #555;
+            margin: 0;
+        }
+
+        /* Contact Section */
+        #contact {
+            background: linear-gradient(135deg, #2c5aa0 0%, #1e3a6f 100%);
+            color: white;
+            text-align: center;
+        }
+
+        #contact h2 {
+            color: white;
+        }
+
+        #contact h2::after {
+            background: white;
+        }
+
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .contact-info p {
+            font-size: 1.1rem;
+        }
+
+        .contact-info a {
+            color: white;
+            font-weight: 600;
+            text-decoration: none;
+            border-bottom: 2px solid transparent;
+            transition: border-color 0.3s ease;
+        }
+
+        .contact-info a:hover {
+            border-bottom-color: white;
+        }
+
+        /* Footer */
+        footer {
+            background: #ffffff;
+            color: #495057;
+            text-align: center;
+            padding: 2rem 5%;
+            box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.08);
+        }
+
+        footer p {
+            margin: 0.5rem 0;
+        }
+
+        footer a {
+            color: #2c5aa0;
+            margin: 0 0.5rem;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        /* Back to Top Button */
+        #backToTop {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            background: #2c5aa0;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            font-size: 1.5rem;
+            cursor: pointer;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            z-index: 9999;
+            box-shadow: 0 4px 15px rgba(44, 90, 160, 0.3);
+        }
+
+        #backToTop.show {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        #backToTop:hover {
+            background: #1e3a6f;
+            transform: scale(1.1);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            nav {
+                gap: 1rem;
+                justify-content: center;
+            }
+
+            #profile h1 {
+                font-size: 2rem;
+            }
+
+            section {
+                padding: 2rem 1.5rem;
+            }
+
+            section h2 {
+                font-size: 1.6rem;
+            }
+
+            .projects-grid,
+            .activities-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
 </head>
 <body>
 
@@ -17,11 +510,13 @@
                 <p>Portfolio</p>
             </div>
             <nav>
-                <a href="index.html">Home</a>
-                <a href="about.html">About</a>
-                <a href="projects.html">Projects</a>
-                <a href="certifications.html">Certifications</a>
-                <a href="activities.html">Activities</a>
+                <a href="#profile">Home</a>
+                <a href="#about">About</a>
+                <a href="#skills">Skills</a>
+                <a href="#projects">Projects</a>
+                <a href="#accomplishments">Accomplishments</a>
+                <a href="#certifications">Certifications</a>
+                <a href="#activities">Activities</a>
                 <a href="#contact">Contact</a>
             </nav>
         </div>
@@ -40,9 +535,9 @@
     </section>
 
     <div class="container">
-        <!-- Professional Narrative Section -->
-        <section id="narrative">
-            <h2>Professional Narrative</h2>
+        <!-- About Section -->
+        <section id="about">
+            <h2>About Me</h2>
             <p>
                 I am a dedicated IT student with a passion for web development and problem-solving through technology. My journey in information technology has been driven by curiosity and a desire to create meaningful digital experiences. Through academic projects and self-directed learning, I have developed a strong foundation in front-end development, with hands-on experience in HTML, CSS, JavaScript, and Python.
             </p>
@@ -92,6 +587,7 @@
             <h2>Projects</h2>
             <div class="projects-grid">
                 <div class="project-card">
+                    <div class="project-number">01</div>
                     <h3>Portfolio Website</h3>
                     <p>A responsive personal portfolio website showcasing my skills, projects, and professional journey. Built with modern web technologies and deployed on GitHub Pages.</p>
                     <div class="tech-stack">
@@ -107,6 +603,7 @@
                 </div>
 
                 <div class="project-card">
+                    <div class="project-number">02</div>
                     <h3>Interactive Chess Game</h3>
                     <p>A fully functional chess game with move validation, turn-based gameplay, and an intuitive user interface. Demonstrates logical thinking and DOM manipulation skills.</p>
                     <div class="tech-stack">
@@ -198,6 +695,56 @@
         </p>
     </footer>
 
-    <script src="assets/js/main.js"></script>
+    <!-- Back to Top Button -->
+    <button id="backToTop">↑</button>
+
+    <script>
+        // Smooth Scrolling
+        document.querySelectorAll('nav a[href^="#"]').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href').substring(1);
+                const target = document.getElementById(targetId);
+                if (target) {
+                    const offset = 80;
+                    const position = target.getBoundingClientRect().top + window.pageYOffset - offset;
+                    window.scrollTo({ top: position, behavior: 'smooth' });
+                }
+            });
+        });
+
+        // Active Navigation
+        const sections = document.querySelectorAll('section[id]');
+        window.addEventListener('scroll', () => {
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop - 100;
+                if (window.pageYOffset >= sectionTop) {
+                    current = section.getAttribute('id');
+                }
+            });
+            document.querySelectorAll('nav a').forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === `#${current}`) {
+                    link.classList.add('active');
+                }
+            });
+        });
+
+        // Back to Top Button
+        const backToTop = document.getElementById('backToTop');
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) {
+                backToTop.classList.add('show');
+            } else {
+                backToTop.classList.remove('show');
+            }
+        });
+
+        backToTop.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+    </script>
+
 </body>
 </html>
