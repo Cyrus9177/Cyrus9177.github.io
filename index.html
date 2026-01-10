@@ -469,6 +469,55 @@
             transform: scale(1.1);
         }
 
+        /* Certificate Modal */
+        .cert-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            z-index: 10000;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .cert-modal.show {
+            display: flex;
+        }
+
+        .cert-modal-content {
+            position: relative;
+            max-width: 90%;
+            max-height: 90%;
+        }
+
+        .cert-modal-content img {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 10px 50px rgba(0, 0, 0, 0.5);
+        }
+
+        .cert-modal-close {
+            position: absolute;
+            top: -40px;
+            right: 0;
+            color: white;
+            font-size: 2.5rem;
+            font-weight: bold;
+            cursor: pointer;
+            background: none;
+            border: none;
+            padding: 0;
+            line-height: 1;
+        }
+
+        .cert-modal-close:hover {
+            color: #2c5aa0;
+        }
+
         /* Responsive Design */
         @media (max-width: 768px) {
             .header-content {
@@ -555,17 +604,16 @@
                     <span class="skill-tag">HTML5</span>
                     <span class="skill-tag">CSS3</span>
                     <span class="skill-tag">JavaScript</span>
-                    <span class="skill-tag">Python</span>
+                    <span class="skill-tag">Java</span>
                 </div>
             </div>
 
             <div class="skill-category">
                 <h3>Tools & Technologies</h3>
                 <div class="skill-tags">
-                    <span class="skill-tag">Git</span>
                     <span class="skill-tag">GitHub</span>
                     <span class="skill-tag">VS Code</span>
-                    <span class="skill-tag">Responsive Design</span>
+                    <span class="skill-tag">Cisco Packet Tracer</span>
                 </div>
             </div>
 
@@ -573,7 +621,6 @@
                 <h3>Core Competencies</h3>
                 <div class="skill-tags">
                     <span class="skill-tag">Web Development</span>
-                    <span class="skill-tag">Problem Solving</span>
                     <span class="skill-tag">Version Control</span>
                     <span class="skill-tag">UI/UX Design</span>
                 </div>
@@ -622,11 +669,9 @@
         <section id="accomplishments">
             <h2>Key Accomplishments</h2>
             <ul class="accomplishments-list">
-                <li>Successfully developed and deployed multiple web projects using modern development practices and version control</li>
-                <li>Implemented complex game logic for chess application, including move validation and game state management</li>
-                <li>Created responsive web designs that work seamlessly across desktop, tablet, and mobile devices</li>
-                <li>Maintained clean, well-documented code repositories with descriptive commit messages and organized project structure</li>
-                <li>Self-taught advanced JavaScript concepts through online resources and practical application in projects</li>
+                <li>Built and deployed multiple web projects on GitHub Pages</li>
+                <li>Developed a fully functional chess game with JavaScript</li>
+                <li>Earned certifications in web development and cybersecurity</li>
             </ul>
         </section>
 
@@ -635,11 +680,6 @@
             <h2>Certifications</h2>
             <div class="cert-grid">
                 <div class="cert-item">
-                    <h3>Responsive Web Design Certification</h3>
-                    <p>freeCodeCamp</p>
-                    <a href="https://www.freecodecamp.org/" target="_blank">View Certificate →</a>
-                </div>
-                <div class="cert-item">
                     <h3>Introduction to Cybersecurity</h3>
                     <p>Cisco Networking Academy</p>
                     <a href="https://www.credly.com/badges/bda9bb82-992c-40c3-9ca2-55b40dafcab7/public_url?classId=b7f19a44-1bd9-43bb-86e4-3000c0f02d7c&assignmentId=89438a7e-259e-45b0-a736-cd2d2304ca4b&submissionId=2a7ea90a-5b8c-b472-60ab-4580389e73ee" target="_blank">View Certificate →</a>
@@ -647,7 +687,7 @@
                 <div class="cert-item">
                     <h3>Network Security</h3>
                     <p>ITS (Information Technology Specialists)</p>
-                    <a href="#" target="_blank">View Certificate →</a>
+                    <a href="#" onclick="openCertModal(); return false;" style="cursor: pointer;">View Certificate →</a>
                 </div>
             </div>
         </section>
@@ -674,6 +714,14 @@
 
     <!-- Back to Top Button -->
     <button id="backToTop">↑</button>
+
+    <!-- Certificate Modal -->
+    <div id="certModal" class="cert-modal" onclick="closeCertModal()">
+        <div class="cert-modal-content" onclick="event.stopPropagation()">
+            <button class="cert-modal-close" onclick="closeCertModal()">&times;</button>
+            <img src="https://drive.google.com/uc?export=view&id=1LYDzEH-8HfnS_QvSDl94WK89ZF1qv0jj" alt="Network Security Certificate">
+        </div>
+    </div>
 
     <script>
         // Smooth Scrolling
@@ -720,6 +768,24 @@
 
         backToTop.addEventListener('click', () => {
             window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+
+        // Certificate Modal Functions
+        function openCertModal() {
+            document.getElementById('certModal').classList.add('show');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeCertModal() {
+            document.getElementById('certModal').classList.remove('show');
+            document.body.style.overflow = 'auto';
+        }
+
+        // Close modal with Escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                closeCertModal();
+            }
         });
     </script>
 
