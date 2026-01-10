@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Your Name | IT Portfolio</title>
+    <title>Yeshua Cyrus C. Bautista | IT Portfolio</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
         /* General Styles */
@@ -125,7 +125,7 @@
 
     <!-- Header -->
     <header>
-        <h1>Your Name</h1>
+        <h1>Yeshua Cyrus Bautista</h1>
         <p>IT Student | Aspiring Web Developer</p>
         <nav>
             <a href="#about">About</a>
